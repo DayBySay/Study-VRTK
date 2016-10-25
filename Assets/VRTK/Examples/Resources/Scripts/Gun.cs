@@ -28,7 +28,6 @@
             Rigidbody rb = bulletClone.GetComponent<Rigidbody>();
             rb.AddForce(-bullet.transform.forward * bulletSpeed);
             Destroy(bulletClone, bulletLife);
-            Debug.Log("unko " );
         }
     }
 }
