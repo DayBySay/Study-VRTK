@@ -15,6 +15,6 @@ public class EnemyController : MonoBehaviour {
 
 	void Update () 
 	{
-		animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
+		animator.SetFloat("Speed", agent.velocity.magnitude);
 	}
 }
