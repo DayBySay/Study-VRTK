@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour {
 	[SerializeField, HideInInspector] Animator animator;
 	public ThirdPersonCharacter character { get; private set; }
 	public Transform target;
-	bool attackable;
 
 	void Start()
 	{
@@ -24,17 +23,21 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	 private void Update() 	{
-		animator.SetFloat("Speed", agent.velocity.magnitude);
 
-		 if (target != null)
-		 agent.SetDestination(target.position);
 
-		if (!attackable) {
+		 float distance = getDistance(this.gameObject, target.gameObject);
+		 Debug.Log(distance);
+		if (distance > 2) {
+			 agent.SetDestination(target.position);
 			character.Move(agent.desiredVelocity, false, false);
+			animator.SetFloat("Speed", agent.velocity.magnitude);
 			agent.Resume();
+			animator.SetBool("Attackable", false);
 		} else {
 			character.Move(Vector3.zero, false, false);
+			animator.SetFloat("Speed", 0);
 			agent.Stop();
+			animator.SetBool("Attackable", true);
 		}
 	}
 
@@ -44,18 +47,7 @@ public class EnemyController : MonoBehaviour {
 		 this.target = target;
 	}
 
-	 void OnTriggerEnter(Collider other) {
-		 	if (other.gameObject.tag == "Player") {
-				attackable = true;
-				animator.SetBool("Attackable", attackable);
-			 }
-	 }
-
-
-	 void OnTriggerExit(Collider other) {
-		 	if (other.gameObject.tag == "Player") {
-				attackable = false;
-				animator.SetBool("Attackable", attackable);
-			 }
+	 float getDistance(GameObject from, GameObject to) {
+		 return Vector3.Distance(from.transform.position, to.transform.position);
 	 }
 }
