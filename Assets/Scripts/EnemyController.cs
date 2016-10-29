@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour {
 	[SerializeField, HideInInspector] Animator animator;
 	public ThirdPersonCharacter character { get; private set; }
 	public Transform target;
+	int life = 10;
+
 
 	void Start()
 	{
@@ -23,7 +25,14 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	 private void Update() 	{
-
+		 if (life <= 0)
+		 {
+			character.Move(Vector3.zero, false, false);
+			animator.SetFloat("Speed", 0);
+			agent.Stop();
+			 animator.SetTrigger("Death");
+			 return;
+		 }
 
 		 float distance = getDistance(this.gameObject, target.gameObject);
 		if (distance > 2) {
@@ -53,6 +62,7 @@ public class EnemyController : MonoBehaviour {
 	 void OnTriggerEnter(Collider other) {
 		 if (other.gameObject.tag == "Weapon") {
 			animator.SetTrigger("Hit");
+			life -= 1;
 		 }
 	 }
 }
