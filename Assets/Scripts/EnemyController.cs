@@ -87,6 +87,8 @@ public class EnemyController : MonoBehaviour {
 				return;
 			}
 
+			WeaponController weapon = other.gameObject.GetComponent<WeaponController>();
+			weapon.vive();
 			 damage();
 		 }
 	 }
