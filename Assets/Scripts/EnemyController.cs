@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour {
 			animator.SetFloat("Speed", 0);
 			agent.Stop();
 			 animator.SetTrigger("Death");
-			 Invoke("Death", 10.0f);
+			 Invoke("Death", 7.0f);
 			 isDead = true;
 			 audio.PlayOneShot(seDeath, 1.0f);
 			 return;
