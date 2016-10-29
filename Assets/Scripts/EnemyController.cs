@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour {
 
 	 void OnTriggerEnter(Collider other) {
 		 if (other.gameObject.tag == "Weapon") {
+			animator.SetTrigger("Hit");
 		 }
 	 }
 }
