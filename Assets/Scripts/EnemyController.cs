@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	 void OnTriggerEnter(Collider other) {
+		 Debug.Log(other);
+		
 		 	if (other.gameObject.tag == "Player") {
 				 agent.Stop();
 			 }
