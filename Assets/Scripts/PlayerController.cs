@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void damage() {
-			audio.PlayOneShot(seDamage, 0.1f);
+			audio.PlayOneShot(seDamage, 1.0f);
 			isInvincible = true;
 			Invoke("clearInvincible", 2.0f);
 	}

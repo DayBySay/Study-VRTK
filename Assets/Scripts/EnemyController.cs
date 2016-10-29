@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour {
 		 }
 
 		 float distance = getDistance(this.gameObject, target.gameObject);
-		if (distance > 2) {
+		if (distance > 0.5) {
 			 agent.SetDestination(target.position);
 			character.Move(agent.desiredVelocity, false, false);
 			animator.SetFloat("Speed", agent.velocity.magnitude);
