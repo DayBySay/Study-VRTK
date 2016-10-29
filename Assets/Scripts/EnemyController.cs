@@ -12,9 +12,15 @@ public class EnemyController : MonoBehaviour {
 		animator = GetComponent<Animator>();
 	}
 
-
 	void Update () 
 	{
 		animator.SetFloat("Speed", agent.velocity.magnitude);
 	}
+
+	 void OnTriggerEnter(Collider other) {
+		 	if (other.gameObject.tag == "Player") {
+				 agent.Stop();
+			 }
+	 }
+
 }
