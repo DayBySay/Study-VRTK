@@ -16,7 +16,9 @@ public class EnemyController : MonoBehaviour {
 	public AudioSource audio;
 	public AudioClip seDeath;
 	public AudioClip seDamage;
+	public AudioClip seSpone;
 	bool isInvincible = false;
+	bool isActive = false;
 
 	void Start()
 	{
@@ -26,10 +28,11 @@ public class EnemyController : MonoBehaviour {
 
 		agent.updateRotation = false;
 		agent.updatePosition = true;
+		spone();
 	}
 
 	 private void Update() 	{
-		 if (isDead)
+		 if (isDead || !isActive)
 		 {
 			 return;
 		 }
@@ -47,10 +50,10 @@ public class EnemyController : MonoBehaviour {
 		 }
 
 		 float distance = getDistance(this.gameObject, target.gameObject);
-		if (distance > 0.5) {
+		if (distance > 2) {
 			 agent.SetDestination(target.position);
 			character.Move(agent.desiredVelocity, false, false);
-			animator.SetFloat("Speed", agent.velocity.magnitude);
+			animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
 			agent.Resume();
 			animator.SetBool("Attackable", false);
 		} else {
@@ -61,6 +64,13 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
+void spone() {
+	Invoke("activate", 2.0f);
+	audio.PlayOneShot(seSpone, 3.0f);
+}
+	void activate() {
+		isActive = true;	
+	}
 
 	 public void SetTarget(Transform target) 
 	 {
