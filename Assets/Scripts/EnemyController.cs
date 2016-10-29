@@ -13,7 +13,10 @@ public class EnemyController : MonoBehaviour {
 	public Transform target;
 	int life = 10;
 	bool isDead = false;
-	public AudioSource seDeath;
+	public AudioSource audio;
+	public AudioClip seDeath;
+	public AudioClip seDamage;
+	bool isInvincible = false;
 
 	void Start()
 	{
@@ -39,7 +42,7 @@ public class EnemyController : MonoBehaviour {
 			 animator.SetTrigger("Death");
 			 Invoke("Death", 10.0f);
 			 isDead = true;
-			 seDeath.Play();
+			 audio.PlayOneShot(seDeath, 1.0f);
 			 return;
 		 }
 
@@ -70,9 +73,20 @@ public class EnemyController : MonoBehaviour {
 
 	 void OnTriggerEnter(Collider other) {
 		 if (other.gameObject.tag == "Weapon") {
-			animator.SetTrigger("Hit");
-			life -= 1;
+			 damage();
 		 }
+	 }
+
+	 void damage() {
+		 isInvincible = true;
+		animator.SetTrigger("Hit");
+		audio.PlayOneShot(seDamage, 1.0f);
+		life -= 1;
+		Invoke("clearInvincible", 2.0f);
+	 }
+
+	 void clearInvincible() {
+		 isInvincible = false;
 	 }
 
 	 void Death() {
