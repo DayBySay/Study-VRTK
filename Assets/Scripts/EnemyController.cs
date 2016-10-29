@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour {
 	public ThirdPersonCharacter character { get; private set; }
 	public Transform target;
 	int life = 10;
+	bool isDead = false;
 
 
 	void Start()
@@ -25,12 +26,19 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	 private void Update() 	{
+		 if (isDead)
+		 {
+			 return;
+		 }
+
 		 if (life <= 0)
 		 {
 			character.Move(Vector3.zero, false, false);
 			animator.SetFloat("Speed", 0);
 			agent.Stop();
 			 animator.SetTrigger("Death");
+			 Invoke("Death", 10.0f);
+			 isDead = true;
 			 return;
 		 }
 
@@ -64,5 +72,9 @@ public class EnemyController : MonoBehaviour {
 			animator.SetTrigger("Hit");
 			life -= 1;
 		 }
+	 }
+
+	 void Death() {
+		 Destroy(this.gameObject);	
 	 }
 }
