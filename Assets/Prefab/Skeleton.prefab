@@ -1353,6 +1353,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   animator: {fileID: 0}
   target: {fileID: 0}
+  life: 10
   audio: {fileID: 82000011095455062}
   seDeath: {fileID: 8300000, guid: f1f048974e4c04210a28edc27f36c552, type: 3}
   seDamage: {fileID: 8300000, guid: e9345376c59f452438926096c513dd52, type: 3}

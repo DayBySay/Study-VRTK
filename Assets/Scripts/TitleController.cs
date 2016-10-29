@@ -26,5 +26,11 @@ public class TitleController : VRTK.VRTK_InteractableObject {
 	void drawn() {
 		audio.PlayOneShot(seDrawn, 1.0f);
 		starting = true;
+
+		Invoke("startGame", 5.0f);
+	}
+
+	void startGame() {
+		SteamVR_LoadLevel.Begin("Hunting");
 	}
 }

@@ -17,6 +17,6 @@ SteamVR_TrackedObject trackedObject;
 
 	public void vive() {
  		var device = SteamVR_Controller.Input((int) trackedObject.index);
-		device.TriggerHapticPulse(1000);
+		device.TriggerHapticPulse(500);
 	}
 }
