@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour {
 
 		if (!attackable) {
 			character.Move(agent.desiredVelocity, false, false);
+			agent.Resume();
 		} else {
 			character.Move(Vector3.zero, false, false);
 			agent.Stop();
@@ -45,8 +46,16 @@ public class EnemyController : MonoBehaviour {
 
 	 void OnTriggerEnter(Collider other) {
 		 	if (other.gameObject.tag == "Player") {
-				 attackable = true;
-			animator.SetBool("Attackable", true);
+				attackable = true;
+				animator.SetBool("Attackable", attackable);
+			 }
+	 }
+
+
+	 void OnTriggerExit(Collider other) {
+		 	if (other.gameObject.tag == "Player") {
+				attackable = false;
+				animator.SetBool("Attackable", attackable);
 			 }
 	 }
 }
