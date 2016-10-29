@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	 void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "WeaponSwordEnemy")
+		if (other.gameObject.tag == "WeaponEnemy")
 		{	
 			if (isInvincible) {
 				return;

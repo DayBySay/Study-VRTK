@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour {
 	public GameObject[] EnemyTypes;
 	public GameObject spawnedEnemies;
 	public GameObject points;
+	public int maxEnemyCount;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,7 +17,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void spawnEnemyIfNeeded() {
-		if (spawnedEnemies.transform.childCount > 0)
+		if (spawnedEnemies.transform.childCount > maxEnemyCount -1)
 		{
 			return;
 		}
@@ -25,7 +26,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void spawnEnemy() {
-		GameObject enemy = (GameObject) Instantiate(randomEnemy(), spawnPosition(), Quaternion.identity);
+		GameObject enemy = (GameObject) Instantiate(randomEnemy(), randomSpawnPosition(), Quaternion.identity);
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		enemy.GetComponent<EnemyController>().SetTarget(player.transform);
 		enemy.transform.parent = spawnedEnemies.transform;
@@ -35,7 +36,7 @@ public class GameController : MonoBehaviour {
 		int random = Random.Range (0, EnemyTypes.Length);
 		return EnemyTypes[random];
 	}
-	 Vector3 spawnPosition() {
+	 Vector3 randomSpawnPosition() {
 		 int random = Random.Range(0, points.transform.childCount);
 		 Transform point = points.transform.GetChild(random);
 		return point.position;

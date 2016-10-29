@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour {
 	[SerializeField, HideInInspector] Animator animator;
 	public ThirdPersonCharacter character { get; private set; }
 	public Transform target;
-	int life = 10;
+	public int life;
 	bool isDead = false;
 	public AudioSource audio;
 	public AudioClip seDeath;
@@ -64,10 +64,10 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
-void spone() {
-	Invoke("activate", 2.0f);
-	audio.PlayOneShot(seSpone, 3.0f);
-}
+	void spone() {
+		Invoke("activate", 2.0f);
+		audio.PlayOneShot(seSpone, 3.0f);
+	}
 	void activate() {
 		isActive = true;	
 	}
@@ -82,7 +82,11 @@ void spone() {
 	 }
 
 	 void OnTriggerEnter(Collider other) {
-		 if (other.gameObject.tag == "Weapon") {
+		 if (other.gameObject.tag == "Weapon") {	
+			if (isInvincible) {
+				return;
+			}
+
 			 damage();
 		 }
 	 }
@@ -92,7 +96,7 @@ void spone() {
 		animator.SetTrigger("Hit");
 		audio.PlayOneShot(seDamage, 1.0f);
 		life -= 1;
-		Invoke("clearInvincible", 2.0f);
+		Invoke("clearInvincible", 1.0f);
 	 }
 
 	 void clearInvincible() {
