@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour {
 	public Transform target;
 	int life = 10;
 	bool isDead = false;
-
+	public AudioSource seDeath;
 
 	void Start()
 	{
@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour {
 			 animator.SetTrigger("Death");
 			 Invoke("Death", 10.0f);
 			 isDead = true;
+			 seDeath.Play();
 			 return;
 		 }
 
@@ -76,5 +77,5 @@ public class EnemyController : MonoBehaviour {
 
 	 void Death() {
 		 Destroy(this.gameObject);	
-	 }
-}
+		}
+	}
