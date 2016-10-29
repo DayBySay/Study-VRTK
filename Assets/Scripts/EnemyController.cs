@@ -26,7 +26,6 @@ public class EnemyController : MonoBehaviour {
 
 
 		 float distance = getDistance(this.gameObject, target.gameObject);
-		 Debug.Log(distance);
 		if (distance > 2) {
 			 agent.SetDestination(target.position);
 			character.Move(agent.desiredVelocity, false, false);
@@ -49,5 +48,10 @@ public class EnemyController : MonoBehaviour {
 
 	 float getDistance(GameObject from, GameObject to) {
 		 return Vector3.Distance(from.transform.position, to.transform.position);
+	 }
+
+	 void OnTriggerEnter(Collider other) {
+		 if (other.gameObject.tag == "Weapon") {
+		 }
 	 }
 }
