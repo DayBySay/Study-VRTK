@@ -46,6 +46,7 @@ public class EnemyController : MonoBehaviour {
 	 void OnTriggerEnter(Collider other) {
 		 	if (other.gameObject.tag == "Player") {
 				 attackable = true;
+			animator.SetBool("Attackable", true);
 			 }
 	 }
 }
