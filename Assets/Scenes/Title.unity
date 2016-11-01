@@ -2203,7 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb651feea4b8e14e98d50849b2e173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightOnTouch: 1
+  highlightOnTouch: 0
   touchHighlightColor: {r: 1, g: 1, b: 1, a: 0}
   rumbleOnTouch: {x: 0, y: 0}
   allowedTouchControllers: 0
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   precisionSnap: 0
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
-  hideControllerOnGrab: 0
+  hideControllerOnGrab: 1
   stayGrabbedOnTeleport: 1
   grabAttachMechanic: 0
   detachThreshold: 500
