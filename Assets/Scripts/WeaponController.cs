@@ -15,8 +15,23 @@ SteamVR_TrackedObject trackedObject;
 	
 	}
 
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.tag != "Enemy") {
+			return;
+		}
+
+		vive();
+	}
+
+	void OnTriggerStay(Collider other) {
+		if (other.gameObject.tag != "Enemy") {
+			return;
+		}
+		
+		vive();
+	}
 	public void vive() {
  		var device = SteamVR_Controller.Input((int) trackedObject.index);
-		device.TriggerHapticPulse(500);
+		device.TriggerHapticPulse(2000);
 	}
 }
