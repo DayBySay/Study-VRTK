@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour {
 			 Invoke("Death", 7.0f);
 			 isDead = true;
 			 audio.PlayOneShot(seDeath, 1.0f);
-			 transform.DetachChildren();
+			transform.GetComponent<CapsuleCollider>().enabled = false;
 			 return;
 		 }
 
