@@ -95,10 +95,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010775942288}
   - 137: {fileID: 137000012112366834}
-  - 136: {fileID: 136000010025589688}
   m_Layer: 0
   m_Name: Object01
-  m_TagString: WeaponSwordEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -427,9 +426,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011050202912}
+  - 136: {fileID: 136000012851927818}
   m_Layer: 0
   m_Name: Bip001 Prop1
-  m_TagString: Untagged
+  m_TagString: WeaponEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1358,19 +1358,6 @@ MonoBehaviour:
   seDeath: {fileID: 8300000, guid: f1f048974e4c04210a28edc27f36c552, type: 3}
   seDamage: {fileID: 8300000, guid: e9345376c59f452438926096c513dd52, type: 3}
   seSpone: {fileID: 8300000, guid: 893ba4fddd9464d8eb20a4d9e8032a81, type: 3}
---- !u!136 &136000010025589688
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010544064104}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.07
-  m_Height: 0.8
-  m_Direction: 1
-  m_Center: {x: -0.00000059122976, y: -0.5, z: 0.025102103}
 --- !u!136 &136000010301189680
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1384,6 +1371,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!136 &136000012851927818
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012924408518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 1
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!137 &137000012112366834
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
